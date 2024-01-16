@@ -6,7 +6,7 @@ const Profile = () => {
     // state refers to global state .user->userSLice .user->user
     const user=useSelector((state)=>state.user.user);
 
-    if(user){
+    if(!user){
       return<p>Loading...</p>
     }
 
@@ -17,10 +17,7 @@ const Profile = () => {
         <h1>Email : {user.email}</h1>
         <h1>Uid : {user.uid}</h1>
     </div>
-
   )
-    
-  
 }
 
 export default Profile
