@@ -1,22 +1,35 @@
 import React from 'react'
+import Header from '../components/common/Header/Header'
 import { useSelector } from 'react-redux'
-import Header from '../components/common/Header/Header';
+import Button from '../components/common/Button/Button';
+import { toast } from 'react-toastify';
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
 
 const Profile = () => {
-    // state refers to global state .user->userSLice .user->user
     const user=useSelector((state)=>state.user.user);
+    console.log(user);
 
-    if(!user){
-      return<p>Loading...</p>
+    function handleLogout(){
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        toast.success("User Logge out");
+      }).catch((error) => {
+        // An error happened.
+      });
     }
 
   return (
     <div>
         <Header/>
-        <h1>Name : {user.name}</h1>
-        <h1>Email : {user.email}</h1>
-        <h1>Uid : {user.uid}</h1>
+        <h1>Name: {user.name}</h1>
+        <h1>Email: {user.email}</h1>
+        <h1>Uid: {user.uid}</h1>
+
+        <Button text={"Logout"} onClick={handleLogout}/>
+            
     </div>
+    
   )
 }
 
