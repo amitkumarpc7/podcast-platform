@@ -14,6 +14,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { setUser } from "./slices/userSlice";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateAPodcast from "./pages/CreateAPodcast";
 
 
 
@@ -76,8 +77,10 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<SignUpPage/>}/>
-          <Route element={<PrivateRoutes/>}/>
-          <Route path='/profile' element={<Profile/>}/>
+          <Route element={<PrivateRoutes/>}>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/create-a-podcast' element={<CreateAPodcast/>}/>
+          </Route>
         </Routes>
       </Router>
     </div>

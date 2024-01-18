@@ -8,14 +8,14 @@ import { signOut } from 'firebase/auth';
 
 const Profile = () => {
     const user=useSelector((state)=>state.user.user);
-    console.log(user);
+    // console.log(user);
 
     function handleLogout(){
       signOut(auth).then(() => {
-        // Sign-out successful.
+        
         toast.success("User Logge out");
       }).catch((error) => {
-        // An error happened.
+      
       });
     }
 

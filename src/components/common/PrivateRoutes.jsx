@@ -8,9 +8,6 @@ import { auth } from '../../firebase';
 // Created Private route to protect app from unauthorized access.
 const PrivateRoutes = () => {
   const[user,loading,error]=useAuthState(auth);
-
-  console.log("Private route->",user,loading,error);
-
   if(loading){
     return<p>Loading...</p>
   }
