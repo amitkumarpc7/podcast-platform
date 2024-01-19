@@ -41,3 +41,17 @@ input{
   font-weight: 500;
   margin-bottom: 2rem;
 }
+
+/* Podcast page */
+.podcasts-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  flex-wrap: wrap;
+}
+
+.podcast-title-heading{
+  text-align: left !important;
+  width: 100%;
+}

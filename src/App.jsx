@@ -15,6 +15,7 @@ import { setUser } from "./slices/userSlice";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateAPodcast from "./pages/CreateAPodcast";
+import PodcastsPage from "./pages/Podcasts";
 
 
 
@@ -80,6 +81,7 @@ function App() {
           <Route element={<PrivateRoutes/>}>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/create-a-podcast' element={<CreateAPodcast/>}/>
+            <Route path='/podcasts' element={<PodcastsPage/>}/>
           </Route>
         </Routes>
       </Router>
