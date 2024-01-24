@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/common/Header/Header'
-import PodcastCard from '../components/common/PodcastComponents/PodcastCard/PodcastCard';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase"
 import { collection, doc, onSnapshot, query } from "firebase/firestore";
@@ -8,6 +7,7 @@ import { ToastContainer} from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPodcasts } from '../slices/podcastSlice';
 import Input from '../components/common/Input/Input';
+import PodcastCard from '../components/common/PodcastComponents/PodcastCard/PodcastCard/PodcastCard';
 
 const PodcastsPage = () => {
   const dispatch = useDispatch();
