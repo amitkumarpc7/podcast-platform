@@ -14,6 +14,7 @@ import {db,auth,storage} from "../../../firebase"
 import { doc, setDoc } from 'firebase/firestore';
 
 import { toast } from 'react-toastify';
+import Loader from '../../common/Loader/Loader';
 
 const SignupForm = () => {
     const [fullName, setFullname] = useState("");
@@ -112,7 +113,7 @@ const SignupForm = () => {
                 placeholder="Confirm Password"
                 required={true}/>
                 <Button
-                 text={loading ? "Loading...":"Signup"}
+                 text={loading ? <Loader/>:"Signup"}
                   disabled={loading} 
                   onClick={handleSignup}/>
         </div>

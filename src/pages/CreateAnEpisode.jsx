@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { auth, storage,db } from '../firebase';
 import { addDoc, collection } from 'firebase/firestore';
+import Loader from '../components/common/Loader/Loader';
 
 const CreateAnEpisode = () => {
     const [title, setTitle] = useState("");
@@ -97,7 +98,7 @@ const CreateAnEpisode = () => {
                 fileHandleFnc={audioFileHandle}
                 text={"Upload audio File"}
                 />
-                <Button text={loading ? "Loading..":"Create Episode"}
+                <Button text={loading ? <Loader/> :"Create Episode"}
                 disabled={loading}
                 onClick={handleSubmit} />
                     

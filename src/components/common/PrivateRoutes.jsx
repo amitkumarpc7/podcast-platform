@@ -3,13 +3,14 @@ import React from 'react'
 import {useAuthState} from "react-firebase-hooks/auth";
 import { Outlet,Navigate } from 'react-router-dom';
 import { auth } from '../../firebase';
+import Loader from './Loader/Loader';
 
 
 // Created Private route to protect app from unauthorized access.
 const PrivateRoutes = () => {
   const[user,loading,error]=useAuthState(auth);
   if(loading){
-    return<p>Loading...</p>
+    return<p><Loader/></p>
   }
   else if(!user || error){
     return <Navigate to="/" replace />

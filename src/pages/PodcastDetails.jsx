@@ -8,6 +8,7 @@ import { auth, db } from '../firebase';
 import Button from '../components/common/Button/Button';
 import EpisodeDetails from '../components/common/PodcastComponents/PodcastCard/EpisodeDetails/EpisodeDetails';
 import AudioPlayer from '../components/common/PodcastComponents/PodcastCard/AudioPlayer/AudioPlayer';
+import Loader from '../components/common/Loader/Loader';
 
 const PodcastDetailsPage = () => {
 
@@ -70,7 +71,7 @@ const PodcastDetailsPage = () => {
   }, [id]);
 
   if (loading) {
-    <h1>Loading...</h1>
+    <h1><Loader/></h1>
   }
   return (
     <div>

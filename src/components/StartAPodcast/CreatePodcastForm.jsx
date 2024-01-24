@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { auth, db, storage } from '../../firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import Loader from '../common/Loader/Loader';
 
 const CreatePodcastForm = () => {
     const [title, setTitle] = useState("");
@@ -49,6 +50,7 @@ const CreatePodcastForm = () => {
           setBannerImage(null);
           setDisplayImage(null);
           toast.success("Podcast Created!");
+          navigate("/podcasts")
           setLoading(false);
 
         }
@@ -97,7 +99,7 @@ const CreatePodcastForm = () => {
         fileHandleFnc={bannerImageHandle}
         text={"Banner Image Upload"}/>
 
-        <Button text={loading?"Loading..":"Create Podcast"}
+        <Button text={loading?<Loader/>:"Create Podcast"}
         disabled={loading}
         onClick={handleCreate} />
         

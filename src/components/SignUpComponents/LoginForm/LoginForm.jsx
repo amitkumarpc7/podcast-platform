@@ -12,6 +12,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import Loader from '../../common/Loader/Loader';
 
 
 
@@ -97,7 +98,7 @@ const LoginForm = () => {
                 type="password"
                 placeholder="Password"
                 required={true}/>
-                <Button text={loading?"Loading":"Login"} disabled={loading} onClick={handleLogin}/>
+                <Button text={loading?<Loader/>:"Login"} disabled={loading} onClick={handleLogin}/>
         </div>
     </div>
   )
