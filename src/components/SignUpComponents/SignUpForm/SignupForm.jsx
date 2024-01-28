@@ -15,12 +15,18 @@ import { doc, setDoc } from 'firebase/firestore';
 
 import { toast } from 'react-toastify';
 import Loader from '../../common/Loader/Loader';
+import FileInput from '../../common/FileInput/FileInput';
 
 const SignupForm = () => {
     const [fullName, setFullname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const[profImage,setProfImage]=useState("");
+    const[coverImage,setCoverImage]=useState("");
+
+
     const[loading,setLoading]=useState(false);
 
     // to call actions from redux
@@ -28,6 +34,14 @@ const SignupForm = () => {
 
     // To navigate to diff page
     const navigate=useNavigate();
+
+    // to upload Profile picture
+    const handleProfileImage=(file)=>{
+        setProfImage(file);
+    }
+    const handleCoverImage=(file)=>{
+        setCoverImage(file);
+    }
 
     // Creating signUp functionality
     const handleSignup=async()=>{
@@ -43,7 +57,6 @@ const SignupForm = () => {
                     password
                 );
                 const user=userCredential.user;
-                // console.log(user);
 
                 // storing users in database
                 // db->database users->name of collection 
@@ -112,10 +125,20 @@ const SignupForm = () => {
                 type="Password"
                 placeholder="Confirm Password"
                 required={true}/>
+                <FileInput
+                accept={"image/*"}
+                id={"profile-image"}
+                text="Upload Profile Picture"
+                fileHandleFnc={handleProfileImage}/>
+                <FileInput
+                accept={"image/*"}
+                id={"cover-image"}
+                text={"Profile Cover Image"}
+                fileHandleFnc={handleCoverImage}/>
                 <Button
-                 text={loading ? <Loader/>:"Signup"}
-                  disabled={loading} 
-                  onClick={handleSignup}/>
+                text={loading ? <Loader/>:"Signup"}
+                disabled={loading} 
+                onClick={handleSignup}/>
         </div>
     </div>
   )

@@ -4,12 +4,21 @@ import { useState } from 'react'
 import { toast } from 'react-toastify';
 import { db, storage } from '../../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import FileInput from '../FileInput/FileInput';
 
 
 const EditImage = ({userId}) => {
-  const[profImage,setProfImage]=useState(null);
+  const[newImage,setnewImage]=useState(null);
   // const[imageUrl,setImageUrl]=useState('');
   const[loading,setLoading]=useState(false);
+
+// for image handling
+const onChange = (event) => {
+  // Get the selected image
+  const selectedImage = event.target.files[0]; 
+// Update the image state
+  setnewImage(selectedImage); 
+};
 
   // For image Uploading
   const handleUpload=async()=>{
@@ -20,11 +29,11 @@ const EditImage = ({userId}) => {
 
       try{
         const profRef=ref(storage,`userProfileImages/${uid}/${Date.now()}`);
-        await uploadBytes(profRef,profImage);
-        const profImageUrl=await getDownloadURL(profRef);
+        await uploadBytes(profRef,newImage);
+        const newImageUrl=await getDownloadURL(profRef);
 
-    //profImageUrl 
-        setProfImage(null); 
+       //newImageUrl 
+        setnewImage(null); 
         toast.success("Profile Picture Uploaded");
         setLoading(false);     
       }
@@ -38,7 +47,16 @@ const EditImage = ({userId}) => {
   }
 
   return (
-    <div>EditImage</div>
+    <div>
+       <label htmlFor="edit-image">Sure?.Click here</label>
+      <input
+        type="file"
+        accept="image/*"
+        id="edit-image"
+        style={{ display: "none" }}
+        onChange={onChange}
+      />
+    </div>
   )
 }
 
