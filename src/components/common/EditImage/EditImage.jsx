@@ -5,18 +5,24 @@ import { toast } from 'react-toastify';
 import { db, storage } from '../../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import FileInput from '../FileInput/FileInput';
+import { useDispatch } from 'react-redux';
 
 
-const EditImage = ({userId}) => {
+const EditImage = ({imageName,
+  uid,
+  setUpdate,
+  loading,
+  setLoading,
+  update,
+  editImage,
+  setEditImage,}) => {
   const[newImage,setnewImage]=useState(null);
-  // const[imageUrl,setImageUrl]=useState('');
-  const[loading,setLoading]=useState(false);
+  const dispatch=useDispatch();
 
 // for image handling
 const onChange = (event) => {
-  // Get the selected image
+// Get the selected image
   const selectedImage = event.target.files[0]; 
-// Update the image state
   setnewImage(selectedImage); 
 };
 
