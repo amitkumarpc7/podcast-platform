@@ -98,7 +98,7 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
   return (
     <div className="custom-audio-player" style={{marginTop:"20px"}}>
       <img src={image} className="display-image-player" />
-      <audio ref={audioRef} src={audioSrc} />
+      <audio ref={audioRef} src={`${audioSrc}.mp3`} />
       <p className="audio-btn" onClick={togglePlay}>
         {isPlaying ? <FaPause /> : <FaPlay />}
       </p>

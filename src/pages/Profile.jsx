@@ -17,8 +17,7 @@ const Profile = () => {
 
     function handleLogout(){
       signOut(auth).then(() => {
-        
-        toast.success("User Logge out");
+        toast.success("User Logged out");
       }).catch((error) => {
       
       });

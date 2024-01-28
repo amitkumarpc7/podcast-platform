@@ -41,6 +41,8 @@ const PodcastsPage = () => {
     item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
   );
 
+  
+
   return (
     <div>
       <Header />

@@ -16,6 +16,7 @@ const CreatePodcastForm = () => {
     const [displayImage, setDisplayImage] = useState("");
     const [bannerImage, setBannerImage] = useState("");
     const[loading,setLoading]=useState(false);
+
     // to call actions from redux
     const dispatch= useDispatch();
     // To navigate to diff page
@@ -88,6 +89,7 @@ const CreatePodcastForm = () => {
         type="text"
         placeholder="Description"
         required={true}/>
+        
 
         <FileInput accept={"image/*"} 
         id="display-image-input"

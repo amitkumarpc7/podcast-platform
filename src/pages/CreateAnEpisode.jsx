@@ -29,7 +29,7 @@ const CreateAnEpisode = () => {
     const navigate=useNavigate();
 
     const audioFileHandle=(file)=>{
-        setAudioFile(audioFile);
+        setAudioFile(file);
     }
     const handleSubmit=async()=>{
         setLoading(true);
@@ -42,7 +42,7 @@ const CreateAnEpisode = () => {
                 const episodeData={
                     title:title,
                     description:desc,
-                    audioFile:audioURL
+                    audioFile:audioURL 
                 };
                 await addDoc(collection(db,"podcasts",id,"episodes"),episodeData);
                 toast.success("Episode Created succesfully");

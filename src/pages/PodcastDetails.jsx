@@ -70,6 +70,10 @@ const PodcastDetailsPage = () => {
     };
   }, [id]);
 
+  useEffect(() => {
+    console.log("PF", playingFile)
+  }, [playingFile])
+
   if (loading) {
     <h1><Loader/></h1>
   }
