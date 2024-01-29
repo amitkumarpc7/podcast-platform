@@ -98,7 +98,7 @@ const Profile = () => {
     }
 
     function handleNavigate() {
-      navigate("/start-podcast");
+      navigate("/create-a-podcast");
     }
 
 

@@ -70,7 +70,7 @@ const CreatePodcastForm = () => {
     }
     const displayImageHandle=(file)=>{
       setDisplayImage(file);
-    }
+    } 
     const bannerImageHandle=(file)=>{
       setBannerImage(file);
     }

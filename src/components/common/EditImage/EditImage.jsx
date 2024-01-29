@@ -52,6 +52,10 @@ const onChange = (event) => {
     }
   }
 
+  if(loading){
+    return<Loader/>;
+  }
+
   return (
     <div>
        <label htmlFor="edit-image">Sure?.Click here</label>

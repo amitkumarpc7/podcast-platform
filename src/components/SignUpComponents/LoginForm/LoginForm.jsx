@@ -57,6 +57,7 @@ const LoginForm = () => {
             }
             catch(e){
                 console.log("error",e);
+                toast.error(e.message);
                 setLoading(false);
             }
 
@@ -76,6 +77,7 @@ const LoginForm = () => {
             }
             catch(e){
                 console.log("Error",e);
+                toast.error(e.message);
                 setLoading(false);
             }
         }

@@ -16,6 +16,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import Loader from '../../common/Loader/Loader';
 import FileInput from '../../common/FileInput/FileInput';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const SignupForm = () => {
     const [fullName, setFullname] = useState("");
@@ -23,8 +24,8 @@ const SignupForm = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const[profImage,setProfImage]=useState("");
-    const[coverImage,setCoverImage]=useState("");
+    const[profileImage,setprofileImage]=useState("");
+    const[profileCoverImage,setprofileCoverImage]=useState("");
 
 
     const[loading,setLoading]=useState(false);
@@ -35,19 +36,17 @@ const SignupForm = () => {
     // To navigate to diff page
     const navigate=useNavigate();
 
-    // to upload Profile picture
-    const handleProfileImage=(file)=>{
-        setProfImage(file);
-    }
-    const handleCoverImage=(file)=>{
-        setCoverImage(file);
-    }
+
 
     // Creating signUp functionality
     const handleSignup=async()=>{
         console.log("Signup done");
         setLoading(true);
-        if(password.length>=6 && password==confirmPassword && fullName && email){
+        if
+        (password.length>=6 && password==confirmPassword && 
+            fullName && email && 
+            profileImage && profileCoverImage)
+        {
             try{
 
                 // Creating account
@@ -58,6 +57,19 @@ const SignupForm = () => {
                 );
                 const user=userCredential.user;
 
+                // For profile image
+                const profileImageRef=ref(storage,`userProfileImages/${auth.currentUser.uid}/${Date.now()}`);
+                // Uploading Profile image & getting link
+                await uploadBytes(profileImageRef,profileImage);
+                const profileImageUrl=await getDownloadURL(profileImageRef);
+
+                // for Cover image
+                const profileCoverImageRef=ref(storage,`userProfileImages/${auth.currentUser.uid}/${Date.now()}`);
+                await uploadBytes(profileCoverImageRef,profileCoverImage);
+                const profileCoverImageUrl=await getDownloadURL(profileCoverImageRef);
+
+
+
                 // storing users in database
                 // db->database users->name of collection 
                 await setDoc(doc(db,"users",user.uid),
@@ -65,6 +77,8 @@ const SignupForm = () => {
                     name:fullName,
                     email:user.email,
                     uid:user.uid,
+                    profileImage:profileImageUrl,
+                    profileCoverImage:profileCoverImageUrl,
 
                 });
 
@@ -74,6 +88,9 @@ const SignupForm = () => {
                         name:fullName,
                         email:user.email,
                         uid:user.uid,
+                        profileImage:profileImageUrl,
+                        profileCoverImage:profileCoverImageUrl,
+                        
                     })
                 );
                 navigate("/profile");
@@ -96,6 +113,13 @@ const SignupForm = () => {
             }
         }
         setLoading(false);
+    }
+
+    const handleProfileImage=(file)=>{
+        setprofileImage(file);
+    }
+    const handleprofileCoverImage=(file)=>{
+        setprofileCoverImage(file);
     }
 
     return (
@@ -134,7 +158,7 @@ const SignupForm = () => {
                 accept={"image/*"}
                 id={"cover-image"}
                 text={"Profile Cover Image"}
-                fileHandleFnc={handleCoverImage}/>
+                fileHandleFnc={handleprofileCoverImage}/>
                 <Button
                 text={loading ? <Loader/>:"Signup"}
                 disabled={loading} 
