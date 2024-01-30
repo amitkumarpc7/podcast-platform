@@ -9,7 +9,7 @@ import Loader from "../components/common/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
 import { setUser } from "../slices/userSlice";
-
+import PodcastCard from "../components/common/PodcastComponents/PodcastCard/PodcastCard/PodcastCard"
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
   const [userPodcasts, setUserPodcasts] = useState([]);
