@@ -56,6 +56,7 @@ const SignupForm = () => {
                     password
                 );
                 const user=userCredential.user;
+                console.log(user);
 
                 // For profile image
                 const profileImageRef=ref(storage,`userProfileImages/${auth.currentUser.uid}/${Date.now()}`);
