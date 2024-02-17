@@ -5,13 +5,11 @@ import { FaCircleXmark } from "react-icons/fa6";
 
 const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
   const audioRef = useRef();
-
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMute, setIsMute] = useState(false);
-//   Duration and Volume are integers
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState("");
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState("");
 
   const handleDuration = (e) => {
     setCurrentTime(e.target.value);
@@ -26,19 +24,15 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
     }
   }
 
-//   For mute functionality
   function toggleMute() {
     setIsMute(isMute ? false : true);
   }
 
-//   for Volume
   function handleVolume(e) {
     setVolume(e.target.volume);
     audioRef.current.volume = e.target.value;
   }
 
-
-//   To fix display duration properly since it is in milliseconds 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -51,7 +45,6 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
     audio.addEventListener("loadedmetdata", handleLoadedMetaData);
     audio.addEventListener("ended", handleEnded);
 
-    // To avoid Data leaking
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetdata", handleLoadedMetaData);
@@ -98,7 +91,7 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
   return (
     <div className="custom-audio-player" style={{marginTop:"20px"}}>
       <img src={image} className="display-image-player" />
-      <audio ref={audioRef} src={`${audioSrc}.mp3`} />
+      <audio ref={audioRef} src={audioSrc} />
       <p className="audio-btn" onClick={togglePlay}>
         {isPlaying ? <FaPause /> : <FaPlay />}
       </p>
@@ -112,6 +105,7 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
           onChange={handleDuration}
           step={0.01}
         />
+        {/* <p>-{formatTime(duration - currentTime)}</p> */}
         <p className="audio-btn" onClick={toggleMute}>
           {!isMute ? <FaVolumeUp /> : <FaVolumeMute />}
         </p>
@@ -129,6 +123,8 @@ const AudioPlayer = ({ audioSrc, image, setPlayingFile }) => {
       </div>
     </div>
   );
-};
+ 
+  
+}
 
 export default AudioPlayer;
