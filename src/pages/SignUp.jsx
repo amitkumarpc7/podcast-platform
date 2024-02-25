@@ -8,7 +8,7 @@ const SignUpPage = () => {
   const [flag,setFlag]=useState(false);
   return (
     <div>
-        <Header flag={flag} setFlag={setFlag}/>
+        <Header/>
         <div className='input-wrapper'>
             
             {!flag ?<h1>Signup</h1>:<h1>Login</h1>}
