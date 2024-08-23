@@ -14,10 +14,10 @@ const SignUpPage = () => {
             {!flag ?<h1>Signup</h1>:<h1>Login</h1>}
             {!flag ? <SignupForm/>:<LoginForm/>}
             {!flag ?
-            (<p style={{cursor:"pointer"}} onClick={()=>setFlag(!flag)}>
+            (<p style={{cursor:"pointer"}} onClick={()=>setFlag(!flag)} className='cursor-link'>
               Already have an Account ? Login
             </p>):
-            (<p style={{cursor:"pointer"}} onClick={()=>setFlag(!flag)}>
+            (<p style={{cursor:"pointer"}} onClick={()=>setFlag(!flag)} className='cursor-link'>
                 Don't have an Account ? Signup
                 </p>
             )}    

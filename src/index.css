@@ -130,6 +130,92 @@ a{
   color: var(--purple-grey) 
 }
 
-/* .profile-details h1:first-child {
-  margin-top: 0; 
-} */
+/* for link */
+/* styles.css */
+.cursor-link {
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: color 0.3s ease; 
+}
+
+.cursor-link:hover {
+  color: #007bff; 
+  text-decoration: none;
+}
+
+/* for responsiveness */
+@media (max-width: 768px) {
+  .input-wrapper {
+    width: 90vw;
+    margin-top: 1.5rem;
+  }
+
+  .input-wrapper h1 {
+    font-size: 1.2rem;
+  }
+
+  .banner-wrapper {
+    height: 250px;
+  }
+
+  .banner-wrapper img {
+    height: 250px;
+  }
+
+  .profile-details {
+    padding: 15px;
+  }
+
+  .profile-details h1 {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  .profile {
+    top: 300px;
+    margin-bottom: 2rem;
+  }
+
+  .podcasts-flex {
+    gap: .5rem;
+  }
+}
+
+/* For extra small screens */
+@media (max-width: 480px) {
+  .input-wrapper {
+    width: 100vw;
+    margin-top: 1rem;
+  }
+
+  .input-wrapper h1 {
+    font-size: 1rem;
+  }
+
+  .banner-wrapper {
+    height: 200px;
+  }
+
+  .banner-wrapper img {
+    height: 200px;
+  }
+
+  .profile-details {
+    padding: 10px;
+  }
+
+  .profile-details h1 {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .profile {
+    top: 250px;
+    margin-bottom: 1.5rem;
+  }
+
+  .podcasts-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
