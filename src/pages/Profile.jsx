@@ -9,7 +9,7 @@ import Loader from "../components/common/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
 import { setUser } from "../slices/userSlice";
-import PodcastCard from "../components/common/PodcastComponents/PodcastCard/PodcastCard/PodcastCard"
+import PodcastCard from "../components/common/PodcastComponents/PodcastCard/PodcastCard/PodcastCard";
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
   const [userPodcasts, setUserPodcasts] = useState([]);
@@ -90,7 +90,8 @@ const Profile = () => {
     <div className="profile-wrapper">
       <Header />
       <div className="input-wrapper">
-        <h1>Profile</h1></div>
+        <h1>Profile</h1>
+      </div>
       <div className="banner-wrapper profile-cover">
         <img src={user?.profileCoverImage} alt="" />
       </div>
@@ -108,9 +109,6 @@ const Profile = () => {
         <h1>User Id : {user?.uid}</h1>
       </div>
 
-      {/* <h1>Name: {user.name}</h1>
-        <h1>Email: {user.email}</h1>
-        <h1>Uid: {user.uid}</h1> */}
       <div className="input-wrapper">
         <h1>Your Podcasts</h1>
         <div className="podcasts-flex" style={{ margin: "1.5rem" }}>
@@ -132,13 +130,14 @@ const Profile = () => {
       </div>
 
       <Button
+        className="logout-button"
         text={"Logout"}
         onClick={handleLogout}
         style={{
           position: "absolute",
-          right: "60px",
+          right: "5px",
           top: "60px",
-          width: "120px",
+          width: "60px",
         }}
       />
     </div>

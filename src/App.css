@@ -23,13 +23,13 @@
 }
 .gradient{
   position: absolute;
-  width: 800px;
-  height: 150px;
+  width: 80vw;
+  height: 20vh;
   margin: auto;
   background-color: var(--blue);
   filter:blur(100px);
   z-index:-1;
-  top:-120px;
+  top:-10vh;
 }
 .active{
   color: var(--white) !important;

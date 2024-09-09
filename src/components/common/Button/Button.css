@@ -1,16 +1,24 @@
-.custom-btn{
-    text-align: center;
-    border: 2px solid var(--white);
-    padding: 1rem;
-    border-radius: 0.35rem;
-    cursor: pointer;
-    width: 70vw;
-    font-weight: 500;
-    margin: 1rem;
+.custom-btn {
+  text-align: center;
+  border: 2px solid var(--white);
+  padding: 1rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  width: 70vw;
+  font-weight: 500;
+  margin: 1rem;
 }
 
-.custom-btn:hover{
-    background-color: var(--white);
-    color: var(--theme);
-    transition: all 0.2s;
+.custom-btn:hover {
+  background-color: var(--white);
+  color: var(--theme);
+  transition: all 0.2s;
+}
+@media (max-width: 768px) {
+  .logout-button {
+    position: absolute;
+    right: 5px;
+    top: 60px;
+    width: 60px;
+  }
 }

@@ -155,15 +155,16 @@ a{
   }
 
   .banner-wrapper {
-    height: 250px;
+    height: 25vh;
   }
 
   .banner-wrapper img {
-    height: 250px;
+    height: 25vh;
   }
 
   .profile-details {
     padding: 15px;
+    top: 400px;
   }
 
   .profile-details h1 {
@@ -172,7 +173,7 @@ a{
   }
 
   .profile {
-    top: 300px;
+    top: 30vh;
     margin-bottom: 2rem;
   }
 
@@ -182,7 +183,7 @@ a{
 }
 
 /* For extra small screens */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .input-wrapper {
     width: 100vw;
     margin-top: 1rem;
@@ -202,6 +203,7 @@ a{
 
   .profile-details {
     padding: 10px;
+    margin-top: 155px;
   }
 
   .profile-details h1 {
